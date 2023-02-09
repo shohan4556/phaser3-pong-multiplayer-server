@@ -1,4 +1,5 @@
 require('dotenv').config();
+const morgan = require('morgan');
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
@@ -8,7 +9,10 @@ const PORT = process.env.SERVER_PORT || 3001;
 
 const app = express();
 const server = http.createServer(app);
+
+app.use(morgan('dev'));
 app.use(cors());
+
 const io = new Server(server, {
     cors: {
         origin: [`http://localhost:${process.env.CLIENT_PORT}`],
