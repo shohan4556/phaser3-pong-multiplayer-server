@@ -5,6 +5,7 @@
     "author": "Shohan",
     "license": "MIT",
     "scripts": {
+        "start": "nodemon server.js",
         "watch:server": "nodemon server.js"
     },
     "dependencies": {
