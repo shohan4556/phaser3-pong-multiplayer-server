@@ -33,15 +33,14 @@ const roomName = 'myroom_1';
 // const gameNameSpace = io.of('/play');
 
 io.on('connection', (socket) => {
-    console.log('connected ', socket.id);
+    console.log('##connected ', socket.id);
     players[socket.id] = { id: socket.id, isRefree: false };
     // join to the room
     socket.join(roomName);
 
     socket.on('ready', () => {
-        console.log('+++++ a player is ready');
         readyPlayerCount += 1;
-        // console.log('ready player count', readyPlayerCount);
+        console.log('##ready player count', readyPlayerCount);
         if (readyPlayerCount === 2) {
             // brodcast to all players/clients
             players[socket.id] = { id: socket.id, isRefree: true };
@@ -74,6 +73,6 @@ io.on('connection', (socket) => {
 });
 
 server.listen(PORT, () => {
-    console.log('io ', io);
-    console.log(`server is running on port http://localhost:${PORT}`);
+    // console.log('io ', io);
+    console.log(`PONG server is running on port http://localhost:${PORT}`);
 });
